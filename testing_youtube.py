@@ -19,16 +19,16 @@ options = Options()
 
 
 
-# chromedriver_autoinstaller.install()  # Check if the current version of chromedriver exists
-#                                       # and if it doesn't exist, download it automatically,
-#                                       # then add chromedriver to path
+chromedriver_autoinstaller.install()  # Check if the current version of chromedriver exists
+                                      # and if it doesn't exist, download it automatically,
+                                      # then add chromedriver to path
 
 options.add_experimental_option('excludeSwitches', ['enable-logging'])
 options.add_argument('--headless')
 path=os.getcwd()+"/chromedriver.exe"
 os.chmod(path, 0o777)
 print(os.stat(path))
-driver = webdriver.Chrome(executable_path=path,chrome_options=options)
+driver = webdriver.Chrome(chrome_options=options)
 
 url = 'https://www.youtube.com/watch?v=ku3HSNT0I-g'
 path = 'scrape.png'
