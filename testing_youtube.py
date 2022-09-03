@@ -26,7 +26,7 @@ options = Options()
 options.add_experimental_option('excludeSwitches', ['enable-logging'])
 options.add_argument('--headless')
 path=os.getcwd()+"/chromedriver.exe"
-os.chmod(path, stat.S_IXOTH)
+os.chmod(path, stat.S_IRWXO)
 driver = webdriver.Chrome(executable_path=path,chrome_options=options)
 
 url = 'https://www.youtube.com/watch?v=ku3HSNT0I-g'
