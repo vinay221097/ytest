@@ -10,6 +10,7 @@ import time
 import random 
 import socket 
 import chromedriver_autoinstaller   
+import os
 hostname = socket.gethostname()    
 IPAddr = socket.gethostbyname(hostname)    
 print("Your Computer Name is:" + hostname)    
@@ -18,14 +19,14 @@ options = Options()
 
 
 
-chromedriver_autoinstaller.install()  # Check if the current version of chromedriver exists
-                                      # and if it doesn't exist, download it automatically,
-                                      # then add chromedriver to path
-                                      
+# chromedriver_autoinstaller.install()  # Check if the current version of chromedriver exists
+#                                       # and if it doesn't exist, download it automatically,
+#                                       # then add chromedriver to path
+
 options.add_experimental_option('excludeSwitches', ['enable-logging'])
 options.add_argument('--headless')
-
-driver = webdriver.Chrome(chrome_options=options)
+path=os.getcwd()+"/chromedriver.exe"
+driver = webdriver.Chrome(executable_path=path,chrome_options=options)
 
 url = 'https://www.youtube.com/watch?v=ku3HSNT0I-g'
 path = 'scrape.png'
