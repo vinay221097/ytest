@@ -9,7 +9,7 @@ from selenium.webdriver.common.keys import Keys
 import time
 import random 
 import socket 
-import chromedriver_autoinstaller   
+import chromedriver_binary  
 import os,sys, stat
 hostname = socket.gethostname()    
 IPAddr = socket.gethostbyname(hostname)    
@@ -19,9 +19,9 @@ options = Options()
 
 
 
-chromedriver_autoinstaller.install()  # Check if the current version of chromedriver exists
-                                      # and if it doesn't exist, download it automatically,
-                                      # then add chromedriver to path
+# chromedriver_autoinstaller.install()  # Check if the current version of chromedriver exists
+#                                       # and if it doesn't exist, download it automatically,
+#                                       # then add chromedriver to path
 
 options.add_experimental_option('excludeSwitches', ['enable-logging'])
 options.add_argument('--headless')
