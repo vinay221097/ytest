@@ -8,17 +8,24 @@ from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.keys import Keys
 import time
 import random 
-import socket    
+import socket 
+import chromedriver_autoinstaller   
 hostname = socket.gethostname()    
 IPAddr = socket.gethostbyname(hostname)    
 print("Your Computer Name is:" + hostname)    
 print("Your Computer IP Address is:" + IPAddr)
 options = Options()
 
+
+
+chromedriver_autoinstaller.install()  # Check if the current version of chromedriver exists
+                                      # and if it doesn't exist, download it automatically,
+                                      # then add chromedriver to path
+                                      
 options.add_experimental_option('excludeSwitches', ['enable-logging'])
 options.add_argument('--headless')
 
-driver = webdriver.Chrome(executable_path=r"chromedriver.exe",chrome_options=options)
+driver = webdriver.Chrome(chrome_options=options)
 
 url = 'https://www.youtube.com/watch?v=ku3HSNT0I-g'
 path = 'scrape.png'
