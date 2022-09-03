@@ -10,7 +10,7 @@ import time
 import random 
 import socket 
 import chromedriver_autoinstaller   
-import os
+import os,sys, stat
 hostname = socket.gethostname()    
 IPAddr = socket.gethostbyname(hostname)    
 print("Your Computer Name is:" + hostname)    
@@ -26,7 +26,7 @@ options = Options()
 options.add_experimental_option('excludeSwitches', ['enable-logging'])
 options.add_argument('--headless')
 path=os.getcwd()+"/chromedriver.exe"
-os.chmod(path, 0755)
+os.chmod(path, stat.S_IXOTH)
 driver = webdriver.Chrome(executable_path=path,chrome_options=options)
 
 url = 'https://www.youtube.com/watch?v=ku3HSNT0I-g'
