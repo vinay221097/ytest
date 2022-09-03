@@ -8,10 +8,15 @@ from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.keys import Keys
 import time
 import random 
+import socket    
+hostname = socket.gethostname()    
+IPAddr = socket.gethostbyname(hostname)    
+print("Your Computer Name is:" + hostname)    
+print("Your Computer IP Address is:" + IPAddr)
 options = Options()
 
 options.add_experimental_option('excludeSwitches', ['enable-logging'])
-# options.add_argument('--headless')
+options.add_argument('--headless')
 
 driver = webdriver.Chrome(executable_path=r"chromedriver.exe",chrome_options=options)
 
@@ -32,7 +37,7 @@ for i in range(300):
     # time.sleep(15)
     driver.get(url)
 
-    time.sleep(2)
+    time.sleep(5)
     actions = ActionChains(driver)
     actions.send_keys(Keys.SPACE).perform()
     # eles=driver.find_elements(By.TAG_NAME, 'tp-yt-paper-button"]')
@@ -41,11 +46,15 @@ for i in range(300):
     #     t=ele.get_attribute("aria-label")
     #     print(t)
     # driver.find_element_by_tag_name('body')
-    time.sleep(random.randint(5,80))
+    a=random.randint(5,80)
+    print("sleeping for ",a, " seconds")
+    time.sleep(a)
     # print(driver.get_cookies())
     # driver.save_screenshot(path)
     # el.screenshot(path)
     driver.get("www.google.com")
-    time.sleep(random.randint(1500,4200))
+    b=random.randint(1500,4200)
+    print("sleeping for ",b, " seconds")
+    time.sleep(b)
 
 driver.quit()
