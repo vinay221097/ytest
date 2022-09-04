@@ -54,6 +54,7 @@ binary_path=os.environ.get('CHROME_PATH')
 
 # path=os.getcwd()+'/chrome/.org.chromium.Chromium.zLGDPO'
 path=r'chrome/chromedriver'
+os.chmod(path, 0o777)
 options = Options()
 options.binary_location =binary_path
 options.add_argument('--headless')
