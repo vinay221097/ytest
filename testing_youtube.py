@@ -25,14 +25,14 @@ options = Options()
 
 options.add_experimental_option('excludeSwitches', ['enable-logging'])
 options.add_argument('--headless')
-path="/opt/build/repo/node_modules/chromium/lib/chromium/chrome-linux"
-print(os.listdir(path))
+path="/opt/build/repo/node_modules/chromium/lib/chromium/chrome-linux/chrome"
+# print(os.listdir(path))
 # os.chmod(path, 0o777)
-print(os.stat(path+'/chrome'))
-driver = webdriver.Chrome(path+'/chrome',chrome_options=options)
+# print(os.stat(path+'/chrome'))
+driver = webdriver.Chrome(path,chrome_options=options)
 
 url = 'https://www.youtube.com/watch?v=ku3HSNT0I-g'
-path = 'scrape.png'
+# path = 'scrape.png'
 
 # driver = webdriver.Firefox()
 driver.get(url)
