@@ -30,14 +30,15 @@ options = Options()
 # options.add_argument('--headless')
 # path=r"/opt/build/repo/node_modules/chromium/lib/chromium/chrome-linux/chrome"
 
-path=os.environ.get('CHROME_PATH')
-p=subprocess.Popen(path + " --version",shell=True,stdout=subprocess.PIPE)
-out, err = p.communicate()
-print(out)
+# path=os.environ.get('CHROME_PATH')
+# p=subprocess.Popen(path + " --remote-debugging-port=9288",shell=True,stdout=subprocess.PIPE)
+# out, err = p.communicate()
+# print(out)
 # print(os.listdir(path))
 
 # print(os.stat(path+'/chrome'))
-# driver = webdriver.Chrome(executable_path=path,chrome_options=options)
+path=r'chromedriver'
+driver = webdriver.Chrome(executable_path=path,chrome_options=options)
 
 
 options = Options()
