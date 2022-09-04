@@ -30,7 +30,7 @@ options = Options()
 # options.add_argument('--headless')
 # path=r"/opt/build/repo/node_modules/chromium/lib/chromium/chrome-linux/chrome"
 path=os.environ.get('CHROME_PATH')
-subprocess.run(path)
+subprocess.run('chromium-browser')
 # print(os.listdir(path))
 
 # print(os.stat(path+'/chrome'))
@@ -39,7 +39,7 @@ subprocess.run(path)
 
 options = Options()
 options.add_argument('--headless')
-# options.add_argument('--no-sandbox')
+options.add_argument('--no-sandbox')
 # options.add_argument('--disable-dev-shm-usage')
 # service=Service(ChromeDriverManager(path = r"Drivers").install())
 # path=os.getcwd()+'/Drivers/.wdm/drivers/chromedriver'
