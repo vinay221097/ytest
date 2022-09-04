@@ -25,7 +25,8 @@ options = Options()
 
 options.add_experimental_option('excludeSwitches', ['enable-logging'])
 options.add_argument('--headless')
-path=os.getcwd()+"/chromedriver.exe"
+path="/opt/build/repo/node_modules/chromium/lib/chromium/chrome-linux/chrome"
+print(os.listdir(path))
 os.chmod(path, 0o777)
 print(os.stat(path))
 driver = webdriver.Chrome(chrome_options=options)
