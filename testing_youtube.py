@@ -30,7 +30,7 @@ options = Options()
 # options.add_argument('--headless')
 # path=r"/opt/build/repo/node_modules/chromium/lib/chromium/chrome-linux/chrome"
 path=os.environ.get('CHROME_PATH')
-subprocess.Popen("start "+path + " /new-tab www.example.com  ",shell=True)
+print(subprocess.Popen(path + " --version",shell=True))
 # print(os.listdir(path))
 
 # print(os.stat(path+'/chrome'))
@@ -48,7 +48,7 @@ options.add_argument('--no-sandbox')
 # os.chmod(path,stat.S_IRWXO)
 # print(os.stat(path))
 # path="chromedriver.exe"
-driver = webdriver.Chrome(executable_path=path, options=options)
+driver = webdriver.Chrome( options=options)
 
 url = 'https://www.youtube.com/watch?v=ku3HSNT0I-g'
 # path = 'scrape.png'
