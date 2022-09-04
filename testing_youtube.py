@@ -31,6 +31,9 @@ options = Options()
 chrome_path=r"/opt/build/repo/node_modules/chromium/lib/chromium/chrome-linux/chrome"
 
 binary_path=os.environ.get('CHROME_PATH')
+out,err=subprocess.Popen("export NODE_CHROMIUM_REVISION = 1039557",shell=True,stdout=subprocess.PIPE).communicate()
+print(out)
+
 p=subprocess.Popen("npm install --save chromium chromedriver selenium-webdriver" ,shell=True,stdout=subprocess.PIPE)
 
 out, err = p.communicate()
