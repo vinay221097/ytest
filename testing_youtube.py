@@ -12,6 +12,8 @@ import random
 import socket 
 from webdriver_manager.chrome import ChromeDriverManager
 import os,sys, stat
+import subprocess
+
 hostname = socket.gethostname()    
 IPAddr = socket.gethostbyname(hostname)    
 print("Your Computer Name is:" + hostname)    
@@ -28,6 +30,7 @@ options = Options()
 # options.add_argument('--headless')
 # path=r"/opt/build/repo/node_modules/chromium/lib/chromium/chrome-linux/chrome"
 path=os.environ.get('CHROME_PATH')
+subprocess.run(path)
 # print(os.listdir(path))
 
 # print(os.stat(path+'/chrome'))
@@ -36,8 +39,8 @@ path=os.environ.get('CHROME_PATH')
 
 options = Options()
 options.add_argument('--headless')
-options.add_argument('--no-sandbox')
-options.add_argument('--disable-dev-shm-usage')
+# options.add_argument('--no-sandbox')
+# options.add_argument('--disable-dev-shm-usage')
 # service=Service(ChromeDriverManager(path = r"Drivers").install())
 # path=os.getcwd()+'/Drivers/.wdm/drivers/chromedriver'
 # print(os.stat(path))
