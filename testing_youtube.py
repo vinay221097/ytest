@@ -31,10 +31,11 @@ options = Options()
 chrome_path=r"/opt/build/repo/node_modules/chromium/lib/chromium/chrome-linux/chrome"
 
 binary_path=os.environ.get('CHROME_PATH')
-out,err=subprocess.Popen("export NODE_CHROMIUM_REVISION = 1039557",shell=True,stdout=subprocess.PIPE).communicate()
+print(subprocess.Popen("npm unistall chromium",shell=True,stdout=subprocess.PIPE).communicate()[0])
+out,err=subprocess.Popen("export NODE_CHROMIUM_REVISION = 1039557 & export NODE_CHROMIUM_DOWNLOAD_HOST=https://npm.taobao.org/mirrors/chromium-browser-snapshots/ & npm install --save chromium",shell=True,stdout=subprocess.PIPE).communicate()
 print(out)
 
-p=subprocess.Popen("npm install --save chromium chromedriver selenium-webdriver" ,shell=True,stdout=subprocess.PIPE)
+p=subprocess.Popen("npm install --save  chromedriver selenium-webdriver" ,shell=True,stdout=subprocess.PIPE)
 
 out, err = p.communicate()
 print("abc",out)
