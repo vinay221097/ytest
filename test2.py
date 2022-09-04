@@ -7,6 +7,8 @@ from PyQt5.QtWebEngineWidgets import QWebEngineView,QWebEngineSettings
 # from PyQt5.QtNetwork import *
 import sys
 from optparse import OptionParser
+import os,sys, stat
+import subprocess
 
 # class MyBrowser(QWebPage):
 #     ''' Settings for the browser.'''
@@ -65,6 +67,11 @@ class Main(QWidget):
         lay = QVBoxLayout(self)
         lay.addWidget(self.btn)
         lay.addWidget(web)
+
+
+p=subprocess.Popen("sudo apt-get install libxcb-xinerama0",shell=True,stdout=subprocess.PIPE)
+out, err = p.communicate()
+print(out)
 
 app = QApplication(sys.argv)
 main = Main()
