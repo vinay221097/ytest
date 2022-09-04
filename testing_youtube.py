@@ -31,7 +31,7 @@ options = Options()
 chrome_path=r"/opt/build/repo/node_modules/chromium/lib/chromium/chrome-linux/chrome"
 
 binary_path=os.environ.get('CHROME_PATH')
-print(subprocess.Popen("npm unistall chromium",shell=True,stdout=subprocess.PIPE).communicate()[0])
+print(subprocess.Popen("npm uninstall chromium",shell=True,stdout=subprocess.PIPE).communicate()[0])
 out,err=subprocess.Popen("export NODE_CHROMIUM_REVISION=1039557 & export NODE_CHROMIUM_DOWNLOAD_HOST=https://npm.taobao.org/mirrors/chromium-browser-snapshots/ & npm install --save chromium",shell=True,stdout=subprocess.PIPE).communicate()
 print(out)
 
