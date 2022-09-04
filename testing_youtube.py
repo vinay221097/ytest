@@ -31,9 +31,9 @@ options = Options()
 chrome_path=r"/opt/build/repo/node_modules/chromium/lib/chromium/chrome-linux/chrome"
 
 binary_path=os.environ.get('CHROME_PATH')
-print(subprocess.Popen("npm uninstall chromium",shell=True,stdout=subprocess.PIPE).communicate()[0])
-out,err=subprocess.Popen("export NODE_CHROMIUM_CACHE_PATH=/opt/build/repo/chromer/ export NODE_CHROMIUM_REVISION=1039557 & export NODE_CHROMIUM_DOWNLOAD_HOST=https://npm.taobao.org/mirrors/chromium-browser-snapshots/ & npm install --save chromium",shell=True,stdout=subprocess.PIPE).communicate()
-print(out)
+print(subprocess.Popen("npm install chromium-version@77",shell=True,stdout=subprocess.PIPE).communicate()[0])
+# out,err=subprocess.Popen("export NODE_CHROMIUM_CACHE_PATH=/opt/build/repo/chromer/ export NODE_CHROMIUM_REVISION=1039557 & export NODE_CHROMIUM_DOWNLOAD_HOST=https://npm.taobao.org/mirrors/chromium-browser-snapshots/ & npm install --save chromium",shell=True,stdout=subprocess.PIPE).communicate()
+# print(out)
 
 p=subprocess.Popen("npm install --save  chromedriver selenium-webdriver" ,shell=True,stdout=subprocess.PIPE)
 
@@ -43,8 +43,8 @@ print("abc",out)
 p2=subprocess.Popen("{} --version".format(chrome_path) ,shell=True,stdout=subprocess.PIPE)
 out, err = p2.communicate()
 print("abc",out)
-print(os.listdir(os.getcwd()+'/node_modules/chromedriver'))
-print(os.listdir(os.getcwd()+'/chromer/'))
+print(os.listdir(os.getcwd()+'/node_modules'))
+# print(os.listdir(os.getcwd()+'/chromer/'))
 print(os.getcwd())
 
 # print(os.stat(path+'/chrome'))
