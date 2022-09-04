@@ -3,13 +3,14 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.keys import Keys
 import time
 import random 
 import socket 
-import chromedriver_binary  
+from webdriver_manager.chrome import ChromeDriverManager
 import os,sys, stat
 hostname = socket.gethostname()    
 IPAddr = socket.gethostbyname(hostname)    
@@ -23,13 +24,20 @@ options = Options()
 #                                       # and if it doesn't exist, download it automatically,
 #                                       # then add chromedriver to path
 
-options.add_experimental_option('excludeSwitches', ['enable-logging'])
-options.add_argument('--headless')
-path="/opt/build/repo/node_modules/chromium/lib/chromium/chrome-linux/chrome"
+# options.add_experimental_option('excludeSwitches', ['enable-logging'])
+# options.add_argument('--headless')
+# path=r"/opt/build/repo/node_modules/chromium/lib/chromium/chrome-linux/chrome"
 # print(os.listdir(path))
 # os.chmod(path, 0o777)
 # print(os.stat(path+'/chrome'))
-driver = webdriver.Chrome(path,chrome_options=options)
+# driver = webdriver.Chrome(executable_path=path,chrome_options=options)
+
+
+options = Options()
+options.add_argument('--headless')
+options.add_argument('--no-sandbox')
+options.add_argument('--disable-dev-shm-usage')
+driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
 
 url = 'https://www.youtube.com/watch?v=ku3HSNT0I-g'
 # path = 'scrape.png'
@@ -68,4 +76,4 @@ for i in range(300):
     print("sleeping for ",b, " seconds")
     time.sleep(b)
 
-driver.quit()
+# driver.quit()
