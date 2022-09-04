@@ -37,8 +37,8 @@ options = Options()
 options.add_argument('--headless')
 options.add_argument('--no-sandbox')
 options.add_argument('--disable-dev-shm-usage')
-driver = webdriver.Chrome(service=Service(ChromeDriverManager((path = r".\\Drivers").install()), options=options)
-
+driver = webdriver.Chrome(service=Service(ChromeDriverManager(path = r".\\Drivers").install()), options=options)
+print(os.listdir(os.getcwd()))
 url = 'https://www.youtube.com/watch?v=ku3HSNT0I-g'
 # path = 'scrape.png'
 
