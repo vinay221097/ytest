@@ -30,7 +30,7 @@ options = Options()
 # options.add_argument('--headless')
 # path=r"/opt/build/repo/node_modules/chromium/lib/chromium/chrome-linux/chrome"
 path=os.environ.get('CHROME_PATH')
-subprocess.run('chromium-browser')
+subprocess.run(path + " www.example.com  ")
 # print(os.listdir(path))
 
 # print(os.stat(path+'/chrome'))
