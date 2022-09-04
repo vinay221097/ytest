@@ -34,13 +34,13 @@ binary_path=os.environ.get('CHROME_PATH')
 p=subprocess.Popen("npm install --save chromium chromedriver selenium-webdriver" ,shell=True,stdout=subprocess.PIPE)
 out, err = p.communicate()
 print("abc",out)
-print(os.listdir(os.getcwd()+'/node_modules'))
+print(os.listdir(os.getcwd()+'/node_modules/chromedriver'))
 print(os.getcwd())
 
 # print(os.stat(path+'/chrome'))
 
 path=os.getcwd()+'/chrome/.org.chromium.Chromium.zLGDPO'
-path=r'/vercel/path0/chrome/chromedriver'
+path=r'/node_modules/chromedriver/chromedriver'
 options = Options()
 options.binary_location =binary_path
 options.add_argument('--headless')
