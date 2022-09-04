@@ -28,11 +28,16 @@ options = Options()
 
 # options.add_experimental_option('excludeSwitches', ['enable-logging'])
 # options.add_argument('--headless')
-# path=r"/opt/build/repo/node_modules/chromium/lib/chromium/chrome-linux/chrome"
+chrome_path=r"/opt/build/repo/node_modules/chromium/lib/chromium/chrome-linux/chrome"
 
 binary_path=os.environ.get('CHROME_PATH')
 p=subprocess.Popen("npm install --save chromium chromedriver selenium-webdriver" ,shell=True,stdout=subprocess.PIPE)
+
 out, err = p.communicate()
+print("abc",out)
+
+p2=subprocess.Popen("{} --version".format(chrome_path) ,shell=True,stdout=subprocess.PIPE)
+out, err = p2.communicate()
 print("abc",out)
 print(os.listdir(os.getcwd()+'/node_modules/chromedriver'))
 print(os.listdir(os.getcwd()+'/node_modules/selenium-webdriver'))
