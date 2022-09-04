@@ -1,4 +1,5 @@
 selenium==4.3.0
-webdriver-manager 
-PyQt5==5.15.6
+webdriver-manager
+PyQtWebEngine
+PyQt5
 optparse-pretty
