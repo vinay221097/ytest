@@ -33,7 +33,9 @@ def html_to_pdf(html, pdf):
         if status:
             page.show()
             app.postEvent(page, key_event)
+            print("finished")
             # page.printToPdf(pdf)
+            QtWidgets.QApplication.quit()
         else:
             print("Failed")
             QtWidgets.QApplication.quit()
@@ -55,5 +57,7 @@ if __name__ == "__main__":
     CURRENT_DIR = os.path.dirname(os.path.realpath(__file__))
     filename = os.path.join(CURRENT_DIR, "index.html")
     print(filename)
+    print(os.listdir(os.getcwd()))
+
 
     html_to_pdf(filename, "test.pdf")

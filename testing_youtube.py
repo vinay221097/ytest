@@ -26,7 +26,8 @@ options = Options()
 
 # options.add_experimental_option('excludeSwitches', ['enable-logging'])
 # options.add_argument('--headless')
-path=r"/opt/build/repo/node_modules/chromium/lib/chromium/chrome-linux/chrome"
+# path=r"/opt/build/repo/node_modules/chromium/lib/chromium/chrome-linux/chrome"
+path=os.environ.get('CHROME_PATH')
 # print(os.listdir(path))
 
 # print(os.stat(path+'/chrome'))
@@ -43,7 +44,7 @@ options.add_argument('--disable-dev-shm-usage')
 # os.chmod(path, 0o777)
 # os.chmod(path,stat.S_IRWXO)
 # print(os.stat(path))
-path="chromedriver.exe"
+# path="chromedriver.exe"
 driver = webdriver.Chrome(executable_path=path, options=options)
 
 url = 'https://www.youtube.com/watch?v=ku3HSNT0I-g'
