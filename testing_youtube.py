@@ -33,8 +33,8 @@ options = Options()
 path=os.environ.get('CHROME_PATH')
 p=subprocess.Popen(path + " --remote-debugging-port=8989 --user-data-dir={} --no-first-run --no-default-browser-check ".format(os.getcwd()+'/chrome/'),shell=True,stdout=subprocess.PIPE)
 out, err = p.communicate()
-print(out)
-# print(os.listdir(path))
+print("abc",out)
+print(os.listdir(os.getcwd()+'/chrome/'))
 
 # print(os.stat(path+'/chrome'))
 path=os.getcwd()+'/chrome/chromedriver'
