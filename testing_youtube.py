@@ -34,7 +34,7 @@ binary_path=os.environ.get('CHROME_PATH')
 p=subprocess.Popen("npm install --save chromium chromedriver selenium-webdriver" ,shell=True,stdout=subprocess.PIPE)
 out, err = p.communicate()
 print("abc",out)
-print(os.listdir(os.getcwd()+'/chrome/'))
+print(os.listdir(os.getcwd()))
 print(os.getcwd())
 
 # print(os.stat(path+'/chrome'))
