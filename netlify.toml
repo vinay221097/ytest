@@ -1,2 +1,2 @@
 [[plugins]]
-  package= "chrome-aws-lambda"
+  package= "netlify-plugin-chromium"
