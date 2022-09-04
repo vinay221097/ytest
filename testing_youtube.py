@@ -30,7 +30,7 @@ options = Options()
 # options.add_argument('--headless')
 # path=r"/opt/build/repo/node_modules/chromium/lib/chromium/chrome-linux/chrome"
 
-# path=os.environ.get('CHROME_PATH')
+binary_path=os.environ.get('CHROME_PATH')
 # p=subprocess.Popen(path + " --remote-debugging-port=8989 --user-data-dir={} --no-first-run --no-default-browser-check ".format(os.getcwd()+'/chrome/'),shell=True,stdout=subprocess.PIPE)
 # out, err = p.communicate()
 # print("abc",out)
@@ -42,6 +42,7 @@ print(os.getcwd())
 path=os.getcwd()+'/chrome/.org.chromium.Chromium.zLGDPO'
 path=r'/vercel/path0/chrome/chromedriver'
 options = Options()
+options.binary_location =binary_path
 options.add_argument('--headless')
 options.add_argument('--no-sandbox')
 # options.add_experimental_option("debuggerAddress", "127.0.0.1:8989")
