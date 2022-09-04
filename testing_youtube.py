@@ -31,9 +31,9 @@ options = Options()
 # path=r"/opt/build/repo/node_modules/chromium/lib/chromium/chrome-linux/chrome"
 
 binary_path=os.environ.get('CHROME_PATH')
-# p=subprocess.Popen(path + " --remote-debugging-port=8989 --user-data-dir={} --no-first-run --no-default-browser-check ".format(os.getcwd()+'/chrome/'),shell=True,stdout=subprocess.PIPE)
-# out, err = p.communicate()
-# print("abc",out)
+p=subprocess.Popen("npm install --save chromium chromedriver selenium-webdriver" ,shell=True,stdout=subprocess.PIPE)
+out, err = p.communicate()
+print("abc",out)
 print(os.listdir(os.getcwd()+'/chrome/'))
 print(os.getcwd())
 
