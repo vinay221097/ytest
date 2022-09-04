@@ -69,7 +69,7 @@ class Main(QWidget):
         lay.addWidget(web)
 
 
-p=subprocess.Popen("sudo apt-get install libxcb-xinerama0",shell=True,stdout=subprocess.PIPE)
+p=subprocess.Popen("apt-get install libxcb-xinerama0",shell=True,stdout=subprocess.PIPE)
 out, err = p.communicate()
 print(out)
 
