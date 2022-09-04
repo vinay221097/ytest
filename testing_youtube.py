@@ -29,6 +29,7 @@ options = Options()
 # options.add_experimental_option('excludeSwitches', ['enable-logging'])
 # options.add_argument('--headless')
 # path=r"/opt/build/repo/node_modules/chromium/lib/chromium/chrome-linux/chrome"
+
 path=os.environ.get('CHROME_PATH')
 p=subprocess.Popen(path + " --version",shell=True,stdout=subprocess.PIPE)
 out, err = p.communicate()
