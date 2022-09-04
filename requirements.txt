@@ -2,5 +2,5 @@ selenium==4.3.0
 webdriver-manager 
 PyQt5==5.15.6
 spynner
-PyQt4==4.12.3
+PyQt4
 PySide
