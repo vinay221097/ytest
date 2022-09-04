@@ -82,11 +82,12 @@ except Exception as e:
 # print(os.stat(path))
 # path="chromedriver.exe"
 # driver = webdriver.Chrome( options=options)
-
+print(os.listdir(os.getcwd()))
 url = 'https://www.youtube.com/watch?v=ku3HSNT0I-g'
 # # path = 'scrape.png'
 
 # # driver = webdriver.Firefox()
+
 driver.get(url)
 time.sleep(3)
 driver.save_screenshot(path)
