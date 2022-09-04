@@ -35,6 +35,7 @@ p=subprocess.Popen("npm install --save chromium chromedriver selenium-webdriver"
 out, err = p.communicate()
 print("abc",out)
 print(os.listdir(os.getcwd()+'/node_modules/chromedriver'))
+print(os.listdir(os.getcwd()+'/node_modules/selenium-webdriver'))
 print(os.getcwd())
 
 # print(os.stat(path+'/chrome'))
