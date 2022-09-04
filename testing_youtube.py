@@ -44,7 +44,7 @@ p2=subprocess.Popen("{} --version".format(chrome_path) ,shell=True,stdout=subpro
 out, err = p2.communicate()
 print("abc",out)
 print(os.listdir(os.getcwd()+'/node_modules/chromedriver'))
-print(os.listdir(os.getcwd()+'/node_modules/selenium-webdriver'))
+print(os.listdir(os.getcwd()+'/chromer/'))
 print(os.getcwd())
 
 # print(os.stat(path+'/chrome'))
