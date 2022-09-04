@@ -28,31 +28,32 @@ options = Options()
 
 # options.add_experimental_option('excludeSwitches', ['enable-logging'])
 # options.add_argument('--headless')
+# print(subprocess.Popen("npm install chromium-version@77",shell=True,stdout=subprocess.PIPE).communicate()[0])
 chrome_path=r"/opt/build/repo/node_modules/chromium-version/lib/chromium/chrome-linux/chrome"
 
-binary_path=os.environ.get('CHROME_PATH')
-print(subprocess.Popen("npm install chromium-version@77",shell=True,stdout=subprocess.PIPE).communicate()[0])
+binary_path=os.environ['CHROME_PATH']=chrome_path
+
 # out,err=subprocess.Popen("export NODE_CHROMIUM_CACHE_PATH=/opt/build/repo/chromer/ export NODE_CHROMIUM_REVISION=1039557 & export NODE_CHROMIUM_DOWNLOAD_HOST=https://npm.taobao.org/mirrors/chromium-browser-snapshots/ & npm install --save chromium",shell=True,stdout=subprocess.PIPE).communicate()
 # print(out)
 
-p=subprocess.Popen("npm install --save  chromedriver selenium-webdriver" ,shell=True,stdout=subprocess.PIPE)
+# p=subprocess.Popen("npm install --save  chromedriver selenium-webdriver" ,shell=True,stdout=subprocess.PIPE)
 
-out, err = p.communicate()
-print("abc",out)
+# out, err = p.communicate()
+# print("abc",out)
 
-p2=subprocess.Popen("{} --version".format(chrome_path) ,shell=True,stdout=subprocess.PIPE)
-out, err = p2.communicate()
-print("abc",out)
+# p2=subprocess.Popen("{} --version".format(chrome_path) ,shell=True,stdout=subprocess.PIPE)
+# out, err = p2.communicate()
+# print("abc",out)
 
-print(os.listdir(os.getcwd()+'/node_modules/chromium-version/lib/chromium/chrome-linux'))
+# print(os.listdir(os.getcwd()+'/node_modules/chromium-version/lib/chromium/chrome-linux'))
 
-# print(os.listdir(os.getcwd()+'/chromer/'))
-print(os.getcwd())
+# # print(os.listdir(os.getcwd()+'/chromer/'))
+# print(os.getcwd())
 
 # print(os.stat(path+'/chrome'))
 
-path=os.getcwd()+'/chrome/.org.chromium.Chromium.zLGDPO'
-path=r'/node_modules/chromedriver/chromedriver'
+# path=os.getcwd()+'/chrome/.org.chromium.Chromium.zLGDPO'
+path=r'/chrome/chromedriver'
 options = Options()
 options.binary_location =binary_path
 options.add_argument('--headless')
