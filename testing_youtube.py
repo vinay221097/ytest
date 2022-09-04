@@ -26,7 +26,7 @@ options = Options()
 
 # options.add_experimental_option('excludeSwitches', ['enable-logging'])
 # options.add_argument('--headless')
-# path=r"/opt/build/repo/node_modules/chromium/lib/chromium/chrome-linux/chrome"
+path=r"/opt/build/repo/node_modules/chromium/lib/chromium/chrome-linux/chrome"
 # print(os.listdir(path))
 
 # print(os.stat(path+'/chrome'))
@@ -38,12 +38,12 @@ options.add_argument('--headless')
 options.add_argument('--no-sandbox')
 options.add_argument('--disable-dev-shm-usage')
 service=Service(ChromeDriverManager(path = r"Drivers").install())
-path=os.getcwd()+'/Drivers/.wdm/drivers/chromedriver'
+# path=os.getcwd()+'/Drivers/.wdm/drivers/chromedriver'
 print(os.stat(path))
 os.chmod(path, 0o777)
 # os.chmod(path,stat.S_IRWXO)
 print(os.stat(path))
-driver = webdriver.Chrome(executable_path=r"Drivers/.wdm/drivers/chromedriver", options=options)
+driver = webdriver.Chrome(executable_path=path, options=options)
 
 url = 'https://www.youtube.com/watch?v=ku3HSNT0I-g'
 # path = 'scrape.png'
