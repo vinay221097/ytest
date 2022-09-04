@@ -40,13 +40,17 @@ print(os.getcwd())
 # print(os.stat(path+'/chrome'))
 
 path=os.getcwd()+'/chrome/.org.chromium.Chromium.zLGDPO'
-path=r'/chrome/chromedriver'
+path=r'/vercel/path0/chrome/chromedriver'
 options = Options()
 options.add_argument('--headless')
 options.add_argument('--no-sandbox')
 # options.add_experimental_option("debuggerAddress", "127.0.0.1:8989")
+try:
+    driver = webdriver.Chrome(executable_path=path,chrome_options=options)
+except Exception as e:
+    print(e)
+    driver = webdriver.Chrome(ChromeDriverManager().install(),chrome_options=options)
 
-driver = webdriver.Chrome(executable_path=path,chrome_options=options)
 driver.get('https://google.com')
 print(driver.title)
 
