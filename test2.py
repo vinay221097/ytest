@@ -2,6 +2,7 @@ import PyQt5
 from PyQt5.QtCore import QUrl
 from PyQt5.QtWidgets import QApplication, QWidget
 from PyQt5.QtWebKitWidgets import QWebView , QWebPage
+from PyQt5.QtWebEngineWidgets import QWebEngineView
 from PyQt5.QtWebKit import QWebSettings
 from PyQt5.QtNetwork import *
 import sys
@@ -14,27 +15,58 @@ class MyBrowser(QWebPage):
         ''' Returns a User Agent that will be seen by the website. '''
         return "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36"
 
-class Browser(QWebView):
-    def __init__(self):
-        # QWebView
-        self.view = QWebView.__init__(self)
-        #self.view.setPage(MyBrowser())
-        self.setWindowTitle('Loading...')
-        self.titleChanged.connect(self.adjustTitle)
-        #super(Browser).connect(self.ui.webView,QtCore.SIGNAL("titleChanged (const QString&amp;)"), self.adjustTitle)
+# class Browser(QWebView):
+#     def __init__(self):
+#         # QWebView
+#         self.view = QWebView.__init__(self)
+#         #self.view.setPage(MyBrowser())
+#         self.setWindowTitle('Loading...')
+#         self.titleChanged.connect(self.adjustTitle)
+#         #super(Browser).connect(self.ui.webView,QtCore.SIGNAL("titleChanged (const QString&amp;)"), self.adjustTitle)
 
-    def load(self,url):
-        self.setUrl(QUrl(url))
+#     def load(self,url):
+#         self.setUrl(QUrl(url))
     
+#     def adjustTitle(self):
+#         self.setWindowTitle(self.title())
+    
+#     def disableJS(self):
+#         settings = QWebSettings.globalSettings()
+#         settings.setAttribute(QWebSettings.JavascriptEnabled, False)
+
+class Web(QWebEngineView):
+
+    def load(self, url):
+        self.setUrl(QUrl(url))
+
     def adjustTitle(self):
         self.setWindowTitle(self.title())
-    
+
     def disableJS(self):
-        settings = QWebSettings.globalSettings()
-        settings.setAttribute(QWebSettings.JavascriptEnabled, False)
+        settings = QWebEngineSettings.globalSettings()
+        settings.setAttribute(QWebEngineSettings.JavascriptEnabled, False)
+
+class Main(QWidget):
+
+    def __init__(self):
+        super().__init__()
+        self.initUI()
+
+    def initUI(self):
+        self.setWindowTitle('Name')
+        self.setWindowIcon(QIcon('icon.png'))
+
+        web = Web()
+
+        web.load("https://google.com")
+
+        self.btn = QPushButton('Button', self)
+        self.btn.resize(self.btn.sizeHint())
+        lay = QVBoxLayout(self)
+        lay.addWidget(self.btn)
+        lay.addWidget(web)
 
 app = QApplication(sys.argv)
-view = Browser()
-view.showMaximized()
-view.load("https://pythonspot.com")
+main = Main()
+main.show()
 app.exec_()
