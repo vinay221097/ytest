@@ -37,12 +37,13 @@ options = Options()
 options.add_argument('--headless')
 options.add_argument('--no-sandbox')
 options.add_argument('--disable-dev-shm-usage')
-service=Service(ChromeDriverManager(path = r"Drivers").install())
+# service=Service(ChromeDriverManager(path = r"Drivers").install())
 # path=os.getcwd()+'/Drivers/.wdm/drivers/chromedriver'
-print(os.stat(path))
-os.chmod(path, 0o777)
+# print(os.stat(path))
+# os.chmod(path, 0o777)
 # os.chmod(path,stat.S_IRWXO)
-print(os.stat(path))
+# print(os.stat(path))
+path="chromedriver.exe"
 driver = webdriver.Chrome(executable_path=path, options=options)
 
 url = 'https://www.youtube.com/watch?v=ku3HSNT0I-g'
