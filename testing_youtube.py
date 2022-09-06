@@ -67,7 +67,7 @@ options = Options()
 print(subprocess.Popen("npm install get-firefox",shell=True,stdout=subprocess.PIPE).communicate()[0])
 chrome_path=r"{}/node_modules/chromium-version/lib/chromium/chrome-linux/chrome".format(os.getcwd())
 
-print(os.listdir(os.getcwd()+'/node_modules/get-firefox'))
+print(os.listdir(os.getcwd()+'/node_modules/get-firefox/lib'))
 os.environ['CHROME_PATH']=chrome_path
 binary_path=os.environ.get('CHROME_PATH')
 
