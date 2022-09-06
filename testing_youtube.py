@@ -113,6 +113,10 @@ try:
 except:
     pass
 duration= driver.execute_script(" return document.getElementsByTagName('video')[0].duration")
+if duration is not None:
+    duration=int(duration)
+else:
+    duration=random.randint(10,60)
 random_duration=random.randint(duration-5,duration+5)
 time.sleep(random_duration)
 driver.save_screenshot(path)
