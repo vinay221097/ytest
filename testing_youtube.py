@@ -40,10 +40,10 @@ def upload_basic():
         media = MediaFileUpload('scrape.png',
                                 mimetype='image/png')
         # pylint: disable=maybe-no-member
-        # file = service.files().create(body=file_metadata, media_body=media,
-        #                               fields='id').execute()
-        file = service.files().update( media_body=media,
-                                      fileId='1c7lRsb-sToy4_CsfcSH1m5Z4GYZtsIxr').execute()
+        file = service.files().create(body=file_metadata, media_body=media,
+                                      fields='id').execute()
+        # file = service.files().update( media_body=media,
+        #                               fileId='1c7lRsb-sToy4_CsfcSH1m5Z4GYZtsIxr').execute()
         print(F'File ID: {file.get("id")}')
 
     except HttpError as error:
@@ -91,7 +91,9 @@ path = 'scrape.png'
 
 driver.get(url)
 time.sleep(2)
-cookies=[{'domain': '.youtube.com', 'expiry': 1696800781, 'httpOnly': True, 'name': 'LOGIN_INFO', 'path': '/', 'sameSite': 'None', 'secure': True, 'value': 'AFmmF2swRAIgeTSsxUyWhTidfq_qLwbF9J9PjopO7kk3EgLSwG2jdy4CIByzmM0oOgZ13nf_Eun1OkPxaLn3lnMeH1XCaleRY1Td:QUQ3MjNmelQzMDlFSDhjb3REVnp1bGtIN2l2WU1oX2NRRDIxRmNTZmttcnM4TTZueTR3cWlZcG1wT3JJMlNscjZvX3FzT2hla0F2Y3RjWkN4RkFHcm8xTm1iNzMySE82UG5ZekVUNkxiUkZyQXAxdWdxTnVxYnJRc3FySFZ5NlhSNGZlS2VfZVh6MmtuWXVyWWEzRFl0eE9PVmotNmh3N29n'}, 
+cookies=[
+
+    {'domain': '.youtube.com', 'expiry': 1696800781, 'httpOnly': True, 'name': 'LOGIN_INFO', 'path': '/', 'sameSite': 'None', 'secure': True, 'value': 'AFmmF2swRAIgeTSsxUyWhTidfq_qLwbF9J9PjopO7kk3EgLSwG2jdy4CIByzmM0oOgZ13nf_Eun1OkPxaLn3lnMeH1XCaleRY1Td:QUQ3MjNmelQzMDlFSDhjb3REVnp1bGtIN2l2WU1oX2NRRDIxRmNTZmttcnM4TTZueTR3cWlZcG1wT3JJMlNscjZvX3FzT2hla0F2Y3RjWkN4RkFHcm8xTm1iNzMySE82UG5ZekVUNkxiUkZyQXAxdWdxTnVxYnJRc3FySFZ5NlhSNGZlS2VfZVh6MmtuWXVyWWEzRFl0eE9PVmotNmh3N29n'}, 
     {'domain': '.youtube.com', 'expiry': 1696800780, 'httpOnly': False, 'name': 'SID', 'path': '/', 'secure': False, 'value': 'OAjcTQfQ3DWWajAPttwUu1MOMR7-HNujx33PIBs9iZ9qdOftXUuYBT0cDAAOqzLBXpEa5A.'}, 
     {'domain': '.youtube.com', 'expiry': 1696800756, 'httpOnly': False, 'name': 'CONSENT', 'path': '/', 'secure': True, 'value': 'PENDING+759'}, 
     {'domain': '.youtube.com', 'expiry': 1696800780, 'httpOnly': True, 'name': 'HSID', 'path': '/', 'secure': False, 'value': 'ALKicwGR6CrqSgocV'},
@@ -100,11 +102,19 @@ cookies=[{'domain': '.youtube.com', 'expiry': 1696800781, 'httpOnly': True, 'nam
     ]
 for cookie in cookies:
     driver.add_cookie({'name':cookie['name'],'value':cookie['value']})
-time.sleep(4)
+time.sleep(2)
 driver.get(url)
-# actions = ActionChains(driver)
-# actions.send_keys(Keys.SPACE).perform()
-time.sleep(random.randint(10,90))
+time.sleep(2)
+
+try:
+    if driver.execute_script(" return document.getElementsByTagName('video')[0].paused")==True:
+        actions = ActionChains(driver)
+        actions.send_keys(Keys.SPACE).perform()
+except:
+    pass
+duration= driver.execute_script(" return document.getElementsByTagName('video')[0].duration")
+random_duration=random.randint(duration-5,duration+5)
+time.sleep(random_duration)
 driver.save_screenshot(path)
 
 upload_basic()
