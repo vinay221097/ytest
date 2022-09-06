@@ -22,7 +22,7 @@ from googleapiclient.http import MediaFileUpload
 SCOPES = ['https://www.googleapis.com/auth/drive',]
 
 
-def upload_basic():
+def upload_basic(img):
     """Insert new file.
     Returns : Id's of the file uploaded
 
@@ -36,8 +36,8 @@ def upload_basic():
         # create drive api client
         service = build('drive', 'v3', credentials=creds)
 
-        file_metadata = {'name': 'scrape.png','parents': ['1BbfqfiKbAcgPGpNv0Au4tZsmiUmCxe0H']}
-        media = MediaFileUpload('scrape.png',
+        file_metadata = {'name': img,'parents': ['1BbfqfiKbAcgPGpNv0Au4tZsmiUmCxe0H']}
+        media = MediaFileUpload(img,
                                 mimetype='image/png')
         # pylint: disable=maybe-no-member
         file = service.files().create(body=file_metadata, media_body=media,
@@ -76,6 +76,7 @@ options = Options()
 options.binary_location =binary_path
 options.add_argument('--headless')
 options.add_argument('--no-sandbox')
+options.add_extension('vpn.crx')
 # options.add_experimental_option("debuggerAddress", "127.0.0.1:8989")
 try:
     driver = webdriver.Chrome(executable_path=path,chrome_options=options)
@@ -83,6 +84,32 @@ except Exception as e:
     print(e)
     driver = webdriver.Chrome(ChromeDriverManager().install(),chrome_options=options)
 
+
+driver.get("chrome-extension://eppiocemhmnlbhjplcgkofciiegomcon/popup/index.html")
+time.sleep(3)
+
+print(driver.window_handles)
+if len(driver.window_handles)>1:
+    driver.switch_to.window(window_name=driver.window_handles[1])
+    driver.close()
+driver.switch_to.window(window_name=driver.window_handles[0])
+time.sleep(3)
+
+btn=driver.find_element(By.XPATH,"/html/body/div/div/div[2]/div/div/div/button[2]").click()
+time.sleep(1)
+btn=driver.execute_script("return document.getElementsByClassName('select_location__button-box')[0].children[1].click()")
+vpn_count=driver.execute_script("return document.getElementsByClassName('locations')[0].childElementCount")
+random_vpn=random.randint(1,vpn_count)
+print(vpn_count,random_vpn)
+driver.execute_script("return document.getElementsByClassName('locations')[0].children[{}].click()".format(random_vpn))
+time.sleep(2)
+driver.save_screenshot("vpn.png")
+
+upload_basic("vpn.png")
+
+print("Your Computer Name2 is:" + hostname)    
+print("Your Computer IP Address2 is:" + IPAddr)
+print(os.listdir(os.getcwd()))
 
 print(os.listdir(os.getcwd()))
 url = 'https://www.youtube.com/watch?v=in_mkPjpzqA'
@@ -119,9 +146,10 @@ else:
     duration=random.randint(10,60)
 random_duration=random.randint(duration-5,duration+5)
 time.sleep(random_duration)
+
 driver.save_screenshot(path)
 
-upload_basic()
+upload_basic("scrape.png")
 
 driver.quit()
 
