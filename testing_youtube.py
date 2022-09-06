@@ -76,7 +76,8 @@ options = Options()
 options.binary_location =binary_path
 options.add_argument('--headless')
 options.add_argument('--no-sandbox')
-options.add_extension('vpn.crx')
+vpn_path=os.getcwd()+"/chrome/vpn.crx"
+options.add_extension(vpn_path)
 # options.add_experimental_option("debuggerAddress", "127.0.0.1:8989")
 try:
     driver = webdriver.Chrome(executable_path=path,chrome_options=options)
