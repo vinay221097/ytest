@@ -78,6 +78,7 @@ options.add_argument('--headless')
 options.add_argument('--no-sandbox')
 vpn_path=os.getcwd()+"/chrome/vpn.crx"
 options.add_extension(vpn_path)
+time.sleep(5)
 # options.add_experimental_option("debuggerAddress", "127.0.0.1:8989")
 try:
     driver = webdriver.Chrome(executable_path=path,chrome_options=options)
@@ -85,7 +86,7 @@ except Exception as e:
     print(e)
     driver = webdriver.Chrome(ChromeDriverManager().install(),chrome_options=options)
 
-
+time.sleep(10)
 driver.get("chrome-extension://eppiocemhmnlbhjplcgkofciiegomcon/popup/index.html")
 time.sleep(3)
 
